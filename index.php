@@ -85,6 +85,7 @@
 			<p>
 				Add search query & site<br>
 				use php plugin "curl" to fetch data on other websites<br>
+				use php DOM document to transform data to information<br>
 			</p>
 			<p>
 				<a class="btn" href="#">View details »</a>
@@ -159,7 +160,30 @@
 						        curl_setopt_array($ch, $options);
 						        $output = curl_exec($ch);
 						        curl_close($ch);
-						        echo $output;
+
+						        $doc= new DOMDocument();
+						        $doc->loadHTML($output);
+						        
+						        $list=$doc->getElementById("ires")->getElementsByTagName("a");
+
+						        $links=$doc->getElementsByTagName("cite");
+						        $index=0;
+						        foreach( $list as $node)
+						        {
+						        	if($node->textContent === "Cached")
+						        	{
+						        		break;
+						        	}
+						        	else
+						        	{
+							        	$link=$links->item($index);
+							        	echo "<li>".$node->textContent."</li>";
+							        	$node->setAttribute("href","http://".$link->textContent);
+							        	$index++;
+						        	}
+						        }
+						        echo $doc->saveHTML($doc->getElementById("ires"));
+						        //echo $output;
 							?>
 						</p>
 					</div>
