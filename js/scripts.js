@@ -39,6 +39,16 @@ window.onload=function(){
 	});
 };
 
+var flag=false;
+
 function konami(){
-	alert("konami shows!!");
+	if(!flag)
+	{
+		$("style.konami").html("body{ opacity:0; }");
+	}
+	else
+	{
+		$("style.konami").html("body{ opacity:1; }");
+	}
+	flag=!flag;
 }

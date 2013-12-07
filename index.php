@@ -36,6 +36,9 @@
 			margin-top:10%;
 		}
 	</style>
+	<style class="konami">
+
+	</style>
 </head>
 
 <body>
