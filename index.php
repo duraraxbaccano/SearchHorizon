@@ -68,7 +68,7 @@
 			<img alt="140x140" src="./twi/twi.png" class="img-thumbnail">
 		</div>
 		<div class="col-md-2 column">
-			<img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail">
+			<img alt="140x140" src="./img/plurk2.png" class="img-thumbnail done">
 		</div>
 		<div class="col-md-2 column">
 			<img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail">
@@ -172,12 +172,12 @@
 						        {
 						        	if($node->textContent === "Cached")
 						        	{
-						        		break;
+						        		continue;
 						        	}
 						        	else
 						        	{
 							        	$link=$links->item($index);
-							        	echo "<li>".$node->textContent."</li>";
+							        	//echo "<li>".$node->textContent."</li>"; //debug
 							        	$node->setAttribute("href","http://".$link->textContent);
 							        	$index++;
 						        	}
