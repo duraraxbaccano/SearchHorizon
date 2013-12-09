@@ -25,7 +25,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="shortcut icon" href="img/favicon.ico">
   
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -58,7 +58,6 @@
 	</div>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
-			<small>Multi-Social search tool</small>
 		</div>
 	</div>
 	<div class="row clearfix">
@@ -90,6 +89,7 @@
 				Add search query & site<br>
 				use php extension "curl" to fetch data on other websites<br>
 				use php DOM document to transform data to information<br>
+				fixed url doesn't match bugs
 			</p>
 			<p>
 				<a class="btn" href="#">View details »</a>
@@ -146,7 +146,7 @@
 						                $key=str_replace(" ","+",$key);
 						        }
 						        else
-						                ;
+						                $key="";
 						        // if(isset($_GET["site"]))
 						        // {
 						        //         $site="site:".$_GET["site"];
@@ -166,15 +166,21 @@
 						        curl_close($ch);
 
 						        $doc= new DOMDocument();
+						        libxml_use_internal_errors(TRUE);
 						        $doc->loadHTML($output);
-						        
+						        libxml_clear_errors();
+
 						        $list=$doc->getElementById("ires")->getElementsByTagName("a");
 
 						        $links=$doc->getElementsByTagName("cite");
 						        $index=0;
 						        foreach( $list as $node)
 						        {
-						        	if($node->textContent === "Cached")
+						        	if($node->textContent ==="Cached")
+						        	{
+						        		continue;
+						        	}
+						        	else if($node->textContent ==="Similar")
 						        	{
 						        		continue;
 						        	}
@@ -182,7 +188,12 @@
 						        	{
 							        	$link=$links->item($index);
 							        	//echo "<li>".$node->textContent."</li>"; //debug
-							        	$node->setAttribute("href","http://".$link->textContent);
+							        	if($link->textContent)
+							        	{
+							        		$node->setAttribute("href","http://".$link->textContent);
+							        	}
+							        	else
+							        		;
 							        	$index++;
 						        	}
 						        }
@@ -215,7 +226,9 @@
 						        curl_close($ch);
 
 						        $doc= new DOMDocument();
+						      	libxml_use_internal_errors(TRUE);
 						        $doc->loadHTML($output);
+						        libxml_clear_errors();
 						        
 						        $list=$doc->getElementById("ires")->getElementsByTagName("a");
 
@@ -227,10 +240,17 @@
 						        	{
 						        		continue;
 						        	}
+						        	else if($node->textContent ==="Similar")
+						        	{
+						        		continue;
+						        	}
 						        	else
 						        	{
 							        	$link=$links->item($index);
-							        	$node->setAttribute("href",$link->textContent);
+							        	if($link->textContent)
+							        		$node->setAttribute("href",$link->textContent);
+							        	else
+											;
 							        	$index++;
 						        	}
 						        }
