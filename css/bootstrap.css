@@ -7,6 +7,7 @@
  */
 
 /*! normalize.css v2.1.3 | MIT License | git.io/normalize */
+@import url(http://fonts.googleapis.com/css?family=Montserrat+Subrayada:700);
 
 article,
 aside,
@@ -481,7 +482,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat Subrayada',"Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
   color: inherit;

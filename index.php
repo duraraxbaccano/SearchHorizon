@@ -13,6 +13,7 @@
 	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
 	
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="font-awesome-4.0.3/css/font-awesome.min.css">
 	<link href="css/style.css" rel="stylesheet">
 
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -25,17 +26,12 @@
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
   <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-  <link rel="shortcut icon" href="img/favicon.ico">
-  
+  <link rel="shortcut icon" href="img/favicon2.ico">
+   
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	
-	<style>
-		footer {
-			margin-top:10%;
-		}
-	</style>
 	<style class="konami">
 
 	</style>
@@ -43,14 +39,12 @@
 
 <body>
 <div class="container">
-	<div class="row clearfix">
+	<div class="row clearfix row_header">
 		<div class="col-md-2 column">
 		</div>
 		<div class="col-md-8 column">
 			<div class="page-header">
-				<h1>
-					Search Horizon Alpha
-				</h1>
+				<h1>Search Horizon Alpha</h1>
 			</div>
 		</div>
 		<div class="col-md-2 column">
@@ -60,24 +54,40 @@
 		<div class="col-md-12 column">
 		</div>
 	</div>
-	<div class="row clearfix">
-		<div class="col-md-2 column">
-			<img alt="140x140" src="./fb/fb2.png" class="img-thumbnail">
+	<div class="row clearfix second_menu">
+		<div class="col-md-12 column">
+			<div class="progress">
+			  <div class="progress-bar progress-bar-warning" style="width: 25%">
+			    <span class="sr-only">Plurk</span>
+			  </div>
+			  <div class="progress-bar progress-bar-info" style="width: 25%">
+			    <span class="sr-only">Twitter</span>
+			  </div>
+			  <div class="progress-bar" style="width: 25%">
+			    <span class="sr-only">Facebook</span>
+			  </div>
+			  	<div class="progress-bar progress-bar-danger" style="width: 25%">
+			    <span class="sr-only">Google+</span>
+			  </div>
+			</div>
 		</div>
-		<div class="col-md-2 column">
-			<img alt="140x140" src="./gplus/gplus1.png" class="img-thumbnail">
+	</div>
+		<div class="row clearfix">
+		<div class="col-md-3 column plurk">
+			<img alt="256x256" src="img/plurk.png" />
+			<!-- <i class="fa fa-camera-retro fa-5x"></i> -->
 		</div>
-		<div class="col-md-2 column">
-			<img alt="140x140" src="./twi/twi.png" class="img-thumbnail">
+		<div class="col-md-3 column twitter">
+			<!-- <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> -->
+			<i class="fa fa-twitter-square fa-5x"></i>
 		</div>
-		<div class="col-md-2 column">
-			<img alt="140x140" src="./img/plurk2.png" class="img-thumbnail done">
+		<div class="col-md-3 column facebook">
+			<!-- <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> -->
+			<i class="fa fa-facebook-square fa-5x"></i>
 		</div>
-		<div class="col-md-2 column">
-			<img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail">
-		</div>
-		<div class="col-md-2 column">
-			<img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail">
+		<div class="col-md-3 column googleplus">
+			<!-- <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> -->
+			<i class="fa fa-google-plus-square fa-5x"></i>
 		</div>
 	</div>
 	<div class="row clearfix">
@@ -87,9 +97,29 @@
 			</h2>
 			<p>
 				Add search query & site<br>
-				use php extension "curl" to fetch data on other websites<br>
-				use php DOM document to transform data to information<br>
-				fixed url doesn't match bugs
+				Use php extension "curl" to fetch data on other websites<br>
+				Use php DOM document to transform data to information
+			</p>
+			<h2>2013/12/9</h2>
+			<p>	
+				Fixed url doesn't match bugs<br>
+				Modified bootstrap.min.css to add google font<br>
+				Decorated main page ( add font-awesome.css, kuler, favicon,<br>
+				css-maker)
+			</p>
+			<h2>2013/12/10</h2>
+			<p>	
+				Introduction decoration ( infograph, bootstrap component)
+			</p>
+			<h2>Future...</h2>
+			<p>	
+				Chrome plugin...(programming)<br>
+				Customized & advanced search <br>
+				Sign with Facebook <br>
+				Three.js & HTML5 support<br>
+				Social network backup support<br>
+				Customizing bootstrap<br>
+				Add some js plugins
 			</p>
 			<p>
 				<a class="btn" href="#">View details »</a>
@@ -262,8 +292,8 @@
 			</div>
 		</div>
 	</div>
+	<footer>
+	</footer>
 </div>
-<footer>
-</footer>
 </body>
 </html>

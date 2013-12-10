@@ -1,6 +1,44 @@
-img.img-thumbnail{
-	opacity:0.6;
+body{
+	background:#D1D1D1;
 }
-img.done{
-	opacity:1.0;
+div.container{
+	margin-top:1%;
+	background:#FFF;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	-webkit-box-shadow:  5px 5px 2px 1px rgba(1, 1, 1, 0.5);
+    box-shadow:  5px 5px 2px 1px rgba(1, 1, 1, 0.5);
+}
+div.page-header h1{
+	color:#FFF;
+	text-shadow: 5px 5px 3px #888;
+    filter: dropshadow(color=#000, offx=5, offy=5);
+}
+div.page-header{
+}
+div.row_header{
+	background:#5FFF5F;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	-webkit-box-shadow: inset 1px 1px 2px 1px rgba(1, 1, 1, 0.5);
+	box-shadow: inset 1px 1px 2px 1px rgba(1, 1, 1, 0.5);
+    margin:1%;
+}
+footer {
+	margin-top:10%;
+}
+div.col-md-3 i.fa{
+	font-size: 256px;
+}
+div.plurk:hover{
+	background:#E8B658;
+}
+div.twitter:hover{
+	background:#91E8E7;
+}
+div.facebook:hover{
+	background:#666FFF;
+}
+div.googleplus:hover{
+	background:#FF7670;
 }
