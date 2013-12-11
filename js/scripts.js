@@ -34,12 +34,21 @@ window.onload=function(){
 			command="";
 			konami();
 		}
+		else if(command.search("123456")>=0)
+		{
+			command="";
+			callMember();
+		}
 		else
 			;
 	});
+
+	$("a.konami").click(function(){
+		callMember();
+	});
 };
 
-var flag=false;
+var flag=false,member_block=false;
 
 function konami(){
 	if(!flag)
@@ -51,4 +60,19 @@ function konami(){
 		$("style.konami").html("body{ opacity:1; }");
 	}
 	flag=!flag;
+}
+function callMember()
+{
+	if(!member_block)
+	{
+		$("style.konami").html("div.container{ display:none; }");
+		$("div.developer-pane").addClass("effeckt-page-active");
+	}
+	else
+	{
+		$("style.konami").html("");
+		$("div.developer-pane").removeClass("effeckt-page-active");
+		$("div.container").fadeIn();
+	}
+	member_block=!member_block;
 }
