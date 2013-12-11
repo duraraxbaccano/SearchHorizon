@@ -16,6 +16,8 @@
 	<link rel="stylesheet" href="font-awesome-4.0.3/css/font-awesome.min.css">
 	<link href="css/style.css" rel="stylesheet">
 
+	<!-- flexslider css -->
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
   <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -45,6 +47,7 @@
 		<div class="col-md-8 column">
 			<div class="page-header">
 				<h1>Search Horizon Alpha</h1>
+				<img src="img/app_goal.png" alt="Make search more efficient!!">
 			</div>
 		</div>
 		<div class="col-md-2 column">
@@ -73,8 +76,8 @@
 		</div>
 	</div>
 		<div class="row clearfix">
-		<div class="col-md-3 column plurk">
-			<img alt="256x256" src="img/plurk.png" />
+		<div class="col-md-3 column plurk" style="text-align:center; vertical-align:center">
+			<img alt="256x256" width="240px" height="240px" style="margin-top:10px;" src="img/plurk3.png" />
 			<!-- <i class="fa fa-camera-retro fa-5x"></i> -->
 		</div>
 		<div class="col-md-3 column twitter">
@@ -91,54 +94,71 @@
 		</div>
 	</div>
 	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<h2>
-				2013/12/7
-			</h2>
-			<p>
-				Add search query & site<br>
-				Use php extension "curl" to fetch data on other websites<br>
-				Use php DOM document to transform data to information
-			</p>
-			<h2>2013/12/9</h2>
-			<p>	
-				Fixed url doesn't match bugs<br>
-				Modified bootstrap.min.css to add google font<br>
-				Decorated main page ( add font-awesome.css, kuler, favicon,<br>
-				css-maker)
-			</p>
-			<h2>2013/12/10</h2>
-			<p>	
-				Introduction decoration ( infograph, bootstrap component)
-			</p>
-			<h2>Future...</h2>
-			<p>	
-				Chrome plugin...(programming)<br>
-				Customized & advanced search <br>
-				Sign with Facebook <br>
-				Three.js & HTML5 support<br>
-				Social network backup support<br>
-				Customizing bootstrap<br>
-				Add some js plugins
-			</p>
-			<p>
-				<a class="btn" href="#">View details »</a>
-			</p>
+			<div class="col-md-6 column">
+				<div class="alert alert-dismissable alert-info">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				<h2>
+					2013/12/7
+				</h2>
+				<p>
+					Add search query & site<br>
+					Use php extension "curl" to fetch data on other websites<br>
+					Use php DOM document to transform data to information
+				</p>
+				</div>
+			
+						<div class="alert alert-dismissable alert-success">
+						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+							<h2>2013/12/9</h2>
+							<p>	
+								Fixed url doesn't match bugs<br>
+								Modified bootstrap.min.css to add google font<br>
+								Decorated main page ( add font-awesome.css, kuler, favicon,<br>
+								css-maker)
+							</p>
+						</div>
+					<div class="alert alert-dismissable alert-warning">
+						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+										<h2>2013/12/10</h2>
+										<p>	
+											Introduction decoration ( infograph, bootstrap component)
+										</p>
+					</div>
+					<div class="alert alert-dismissable alert-danger">
+						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+										<h2>Future...</h2>
+										<p>	
+											Chrome plugin...(programming)<br>
+											Customized & advanced search <br>
+											Sign with Facebook <br>
+											Three.js & HTML5 support<br>
+											Social network backup support<br>
+											Customizing bootstrap<br>
+											Add some js plugins
+										</p>
+					</div>
+			</div>
+			<div class="col-md-6 column">
+				<section class="slider">
+			        <div class="flexslider">
+			          <ul class="slides">
+			            <li>
+			  	    	    <img src="img/app_icon.png" />
+			  	    		</li>
+			  	    		<li>
+			  	    	    <img src="img/fav_intro.png" />
+			  	    		</li>
+			  	    		<li>
+			  	    	    <img src="img/intro1.png" />
+			  	    		</li>
+			  	    		<li>
+			  	    	    <img src="img/intro2.png" />
+			  	    		</li>
+			          </ul>
+			        </div>
+			      </section>
+			</div>
 		</div>
-	</div>
-	<div class="row clearfix">
-		<div class="col-md-12 column">
-			<h2>
-				Heading
-			</h2>
-			<p>
-				Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-			</p>
-			<p>
-				<a class="btn" href="#">View details »</a>
-			</p>
-		</div>
-	</div>
 	<div class="row clearfix">
 		<div class="col-md-12 column">
 		</div>
@@ -160,14 +180,20 @@
 			<div class="tabbable" id="tabs-663924">
 				<ul class="nav nav-tabs">
 					<li class="active">
-						<a href="#panel-199176" data-toggle="tab">Plurk</a>
+						<a href="#panel-plurk" data-toggle="tab">Plurk</a>
 					</li>
 					<li>
-						<a href="#panel-627330" data-toggle="tab">Twitter</a>
+						<a href="#panel-twitter" data-toggle="tab">Twitter</a>
+					</li>
+					<li>
+						<a href="#panel-facebook" data-toggle="tab">Facebook</a>
+					</li>
+					<li>
+						<a href="#panel-googleplus" data-toggle="tab">Google+</a>
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane active" id="panel-199176">
+					<div class="tab-pane active" id="panel-plurk">
 						<p>
 							<?php
 						        if(isset($_GET["keyword"]))
@@ -232,7 +258,7 @@
 							?>
 						</p>
 					</div>
-					<div class="tab-pane" id="panel-627330">
+					<div class="tab-pane" id="panel-twitter">
 						<p>
 							<?php
 						        if(isset($_GET["keyword"]))
@@ -288,12 +314,183 @@
 							?>
 						</p>
 					</div>
+					<div class="tab-pane" id="panel-facebook">
+						<p>
+							<?php
+						        if(isset($_GET["keyword"]))
+						        {
+						                $key=$_GET["keyword"];
+						                $key=str_replace(" ","+",$key);
+						        }
+						        else
+						                ;
+						        $site="site:www.facebook.com";
+						        $ch = curl_init();
+						        $options = array(CURLOPT_URL =>
+						        'www.google.com/search?q='.$key."+".$site,
+						        CURLOPT_HEADER => false,
+						        CURLOPT_RETURNTRANSFER => true,
+						        CURLOPT_USERAGENT => "Google Bot",
+						        CURLOPT_FOLLOWLOCATION => true
+						        );
+						        curl_setopt_array($ch, $options);
+						        $output = curl_exec($ch);
+						        curl_close($ch);
+
+						        $doc= new DOMDocument();
+						      	libxml_use_internal_errors(TRUE);
+						        $doc->loadHTML($output);
+						        libxml_clear_errors();
+						        
+						        $list=$doc->getElementById("ires")->getElementsByTagName("a");
+
+						        $links=$doc->getElementsByTagName("cite");
+						        $index=0;
+						        foreach( $list as $node)
+						        {
+						        	if($node->textContent === "Cached")
+						        	{
+						        		continue;
+						        	}
+						        	else if($node->textContent ==="Similar")
+						        	{
+						        		continue;
+						        	}
+						        	else
+						        	{
+							        	$link=$links->item($index);
+							        	if($link->textContent)
+							        		$node->setAttribute("href",$link->textContent);
+							        	else
+											;
+							        	$index++;
+						        	}
+						        }
+						        echo $doc->saveHTML($doc->getElementById("ires"));
+							?>
+						</p>
+					</div>
+					<div class="tab-pane" id="panel-googleplus">
+						<p>
+							<?php
+						        if(isset($_GET["keyword"]))
+						        {
+						                $key=$_GET["keyword"];
+						                $key=str_replace(" ","+",$key);
+						        }
+						        else
+						                ;
+						        $site="site:plus.google.com";
+						        $ch = curl_init();
+						        $options = array(CURLOPT_URL =>
+						        'www.google.com/search?q='.$key."+".$site,
+						        CURLOPT_HEADER => false,
+						        CURLOPT_RETURNTRANSFER => true,
+						        CURLOPT_USERAGENT => "Google Bot",
+						        CURLOPT_FOLLOWLOCATION => true
+						        );
+						        curl_setopt_array($ch, $options);
+						        $output = curl_exec($ch);
+						        curl_close($ch);
+
+						        $doc= new DOMDocument();
+						      	libxml_use_internal_errors(TRUE);
+						        $doc->loadHTML($output);
+						        libxml_clear_errors();
+						        
+						        $list=$doc->getElementById("ires")->getElementsByTagName("a");
+
+						        $links=$doc->getElementsByTagName("cite");
+						        $index=0;
+						        foreach( $list as $node)
+						        {
+						        	if($node->textContent === "Cached")
+						        	{
+						        		continue;
+						        	}
+						        	else if($node->textContent ==="Similar")
+						        	{
+						        		continue;
+						        	}
+						        	else
+						        	{
+							        	$link=$links->item($index);
+							        	if($link->textContent)
+							        		$node->setAttribute("href",$link->textContent);
+							        	else
+											;
+							        	$index++;
+						        	}
+						        }
+						        echo $doc->saveHTML($doc->getElementById("ires"));
+							?>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<footer>
 	</footer>
+</div>
+  <!-- FlexSlider -->
+  <script defer src="js/jquery.flexslider.js"></script>
+
+  <script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+
+
+  <!-- Syntax Highlighter -->
+  <script type="text/javascript" src="js/shCore.js"></script>
+  <script type="text/javascript" src="js/shBrushXml.js"></script>
+  <script type="text/javascript" src="js/shBrushJScript.js"></script>
+
+  <!-- Optional FlexSlider Additions -->
+  <script src="js/jquery.easing.js"></script>
+  <script src="js/jquery.mousewheel.js"></script>
+
+<div class="konami developer-pane" data-effeckt-page="developer-page">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="jumbotron">
+				<h1>
+					Search Horizon Team Member
+				</h1>
+				<p>
+					Four junior undergraduates majoring in 
+					department of Computer Science - University of Taipei 
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large konami" href="#">Return</a>
+				</p>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-3 column">
+					<img alt="140x140" src="img/10016001.jpg" class="img-rounded" />
+				</div>
+				<div class="col-md-3 column">
+					<img alt="140x140" src="img/10016022.jpg" class="img-rounded" />
+				</div>
+				<div class="col-md-3 column">
+					<img alt="140x140" src="img/10016024.jpg" class="img-rounded" />
+				</div>
+				<div class="col-md-3 column">
+					<img alt="140x140" src="img/10016026.jpg" class="img-rounded" />
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>
