@@ -60,7 +60,7 @@
 	<div class="row clearfix">
 		<div class="col-lg-12 column">
 			<div class="input-group">
-			  <input type="text" class="form-control keyword">
+			  <input type="text" class="form-control keyword" hint="type keywords or names">
 			  <span class="input-group-btn">
 			    <button class="btn btn-default search" type="button"><i class="fa fa-search"></i></button>
 			  </span>
@@ -441,6 +441,12 @@
 		</div>
 	</div>
 	<footer>
+		<div class="alert alert-dismissable alert-info">
+		  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	      <h4>Secret Tip:</h4>
+	      <p>type with arrow key:<br>
+	      	↑ ↓ ← → B A</p>
+	    </div>
 	</footer>
 </div>
   <!-- FlexSlider -->
