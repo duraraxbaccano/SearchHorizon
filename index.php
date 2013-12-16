@@ -57,6 +57,16 @@
 		<div class="col-md-12 column">
 		</div>
 	</div>
+	<div class="row clearfix">
+		<div class="col-lg-12 column">
+			<div class="input-group">
+			  <input type="text" class="form-control keyword">
+			  <span class="input-group-btn">
+			    <button class="btn btn-default search" type="button"><i class="fa fa-search"></i></button>
+			  </span>
+			</div><!-- /input-group -->
+			</div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->
 	<div class="row clearfix second_menu">
 		<div class="col-md-12 column">
 			<div class="progress">
@@ -77,20 +87,20 @@
 	</div>
 		<div class="row clearfix">
 		<div class="col-md-3 column plurk" style="text-align:center; vertical-align:center">
-			<img alt="256x256" width="240px" height="240px" style="margin-top:10px;" src="img/plurk3.png" />
+			<i data-target="#panel-plurk"><img alt="256x256" width="240px" height="240px" style="margin-top:10px;" src="img/plurk3.png" /></i>
 			<!-- <i class="fa fa-camera-retro fa-5x"></i> -->
 		</div>
 		<div class="col-md-3 column twitter">
 			<!-- <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> -->
-			<i class="fa fa-twitter-square fa-5x"></i>
+			<i data-target="#panel-twitter" class="fa fa-twitter-square fa-5x"></i>
 		</div>
 		<div class="col-md-3 column facebook">
 			<!-- <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> -->
-			<i class="fa fa-facebook-square fa-5x"></i>
+			<i data-target="#panel-facebook" class="fa fa-facebook-square fa-5x"></i>
 		</div>
 		<div class="col-md-3 column googleplus">
 			<!-- <img alt="140x140" src="http://lorempixel.com/140/140/" class="img-thumbnail" /> -->
-			<i class="fa fa-google-plus-square fa-5x"></i>
+			<i data-target="#panel-googleplus" class="fa fa-google-plus-square fa-5x"></i>
 		</div>
 	</div>
 	<div class="row clearfix">
@@ -134,7 +144,7 @@
 											Three.js & HTML5 support<br>
 											Social network backup support<br>
 											Customizing bootstrap<br>
-											Add some js plugins
+											Add some jquery extensions
 										</p>
 					</div>
 			</div>

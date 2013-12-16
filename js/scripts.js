@@ -46,6 +46,22 @@ window.onload=function(){
 	$("a.konami").click(function(){
 		callMember();
 	});
+	/* smooth scrolling */
+	 $('i[data-target*=#]:not([href=#])').click(function() {
+
+  		$("div.tab-pane.active").toggleClass("active");
+  		$("div"+$(this).attr("data-target")).toggleClass("active");
+  		$("ul.nav.nav-tabs li.active").toggleClass("active");
+  		$("ul.nav.nav-tabs li a[href='"+$(this).attr("data-target")+"']").parent().toggleClass("active");
+  		var moveTo=$("div.tabbable");
+
+        $('html,body').animate({
+          scrollTop: moveTo.offset().top
+        }, 1000);
+  });
+	 $("button.search").click(function(){
+	 	window.location="http://searchhorizon.herokuapp.com/?keyword="+$("input[type='text'].keyword").val()+"#tabs-663924";
+	 });
 };
 
 var flag=false,member_block=false;
