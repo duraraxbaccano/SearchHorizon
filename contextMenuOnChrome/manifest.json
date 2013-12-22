@@ -1,0 +1,13 @@
+{
+  "name": "Search Horizon",
+  "description": "Search Horizon!",
+  "version": "1.0",
+  "permissions": ["contextMenus"],
+  "icons":{
+  	"16":"favicon2.png"
+  },
+  "background": {
+    "scripts": ["searchHorizonOnChrome.js"]
+  },
+  "manifest_version": 2
+}
