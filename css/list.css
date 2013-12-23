@@ -1,0 +1,171 @@
+div#ires ol{
+	display:inline-block;
+	list-style: none;
+
+}
+div#ires ol li a{
+	text-decoration: none;
+}
+div#ires ol li{
+	/*max-width: 40%;*/
+    width: 480px;
+    height: 200px;
+	float: left;
+	margin: 2% 2% 2% 2%; 
+	padding:1px 1px 1px 5px;
+
+
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-topright:5px;
+-moz-border-radius-bottomleft:5px;
+-moz-border-radius-bottomright:5px;
+-webkit-border-top-left-radius:5px;
+-webkit-border-top-right-radius:5px;
+-webkit-border-bottom-left-radius:5px;
+-webkit-border-bottom-right-radius:5px;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+border-bottom-left-radius:5px;
+border-bottom-right-radius:5px;
+
+	transition:All 0.8s ease;
+-webkit-transition:All 0.8s ease;
+-moz-transition:All 0.8s ease;
+-o-transition:All 0.8s ease;
+transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+-webkit-transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+-moz-transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+-o-transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+-ms-transform: rotate(0deg) scale(1) skew(1deg) translate(0px);
+}
+div#ires ol li:hover{
+
+	background-color: rgba(170, 232, 247, 0.6);
+
+	transform: rotate(0deg) scale(1.1) skew(1deg) translate(0px);
+-webkit-transform: rotate(0deg) scale(1.1) skew(1deg) translate(0px);
+-moz-transform: rotate(0deg) scale(1.1) skew(1deg) translate(0px);
+-o-transform: rotate(0deg) scale(1.1) skew(1deg) translate(0px);
+-ms-transform: rotate(0deg) scale(1.1) skew(1deg) translate(0px);
+}
+/*
+div#ires ol li{
+
+	padding: 1px 1px 20px 20px;
+    margin: 5px 0px 5px 0px; 
+
+	-moz-border-radius-topleft: 31px;
+	-moz-border-radius-topright:31px;
+	-moz-border-radius-bottomleft:31px;
+	-moz-border-radius-bottomright:31px;
+	-webkit-border-top-left-radius:31px;
+	-webkit-border-top-right-radius:31px;
+	-webkit-border-bottom-left-radius:31px;
+	-webkit-border-bottom-right-radius:31px;
+	border-top-left-radius:31px;
+	border-top-right-radius:31px;
+	border-bottom-left-radius:31px;
+	border-bottom-right-radius:31px;
+}
+
+
+
+div#ires ol li:first-child{
+	background-color: rgba(0, 255, 0, 0.1);
+	background: rgba(0, 255, 0, 0.1);
+}
+	div#ires ol li:first-child:hover{
+		background-color: rgba(165, 226, 255, 0.1);
+		background: rgba(165, 226, 255, 0.1);
+	}
+
+
+div#ires ol li:nth-child(2){
+	background-color: rgba(0, 255, 0, 0.2);
+	background: rgba(0, 255, 0, 0.2);
+}
+	div#ires ol li:nth-child(2):hover{
+		background-color: rgba(165, 226, 255, 0.2);
+		background: rgba(165, 226, 255, 0.2);
+	}
+
+
+div#ires ol li:nth-child(3){
+	background-color: rgba(0, 255, 0, 0.3);
+background: rgba(0, 255, 0, 0.3);
+}
+	div#ires ol li:nth-child(3):hover{
+		background-color: rgba(165, 226, 255, 0.3);
+		background: rgba(165, 226, 255, 0.3);
+	}
+
+
+div#ires ol li:nth-child(4){
+	background-color: rgba(0, 255, 0, 0.4);
+	background: rgba(0, 255, 0, 0.4);
+}
+	div#ires ol li:nth-child(4):hover{
+		background-color: rgba(165, 226, 255, 0.4);
+		background: rgba(165, 226, 255, 0.4);
+	}
+
+
+div#ires ol li:nth-child(5){
+	background-color: rgba(0, 255, 0, 0.5);
+	background: rgba(0, 255, 0, 0.5);
+}
+	div#ires ol li:nth-child(5):hover{
+		background-color: rgba(165, 226, 255, 0.5);
+		background: rgba(165, 226, 255, 0.5);
+	}
+
+
+div#ires ol li:nth-child(6){
+	background-color: rgba(0, 255, 0, 0.6);
+	background: rgba(0, 255, 0, 0.6);
+}
+	div#ires ol li:nth-child(6):hover{
+		background-color: rgba(165, 226, 255, 0.6);
+		background: rgba(165, 226, 255, 0.6);
+	}
+
+
+div#ires ol li:nth-child(7){
+	background-color: rgba(0, 255, 0, 0.7);
+	background: rgba(0, 255, 0, 0.7);
+}
+	div#ires ol li:nth-child(7):hover{
+		background-color: rgba(165, 226, 255, 0.7);
+		background: rgba(165, 226, 255, 0.7);
+	}
+
+
+div#ires ol li:nth-child(8){
+	background-color: rgba(0, 255, 0, 0.8);
+	background: rgba(0, 255, 0, 0.8);
+}
+	div#ires ol li:nth-child(8):hover{
+		background-color: rgba(165, 226, 255, 0.8);
+		background: rgba(165, 226, 255, 0.8);
+	}
+
+
+div#ires ol li:nth-child(9){
+	background-color: rgba(0, 255, 0, 0.9);
+	background: rgba(0, 255, 0, 0.9);
+}
+	div#ires ol li:nth-child(9):hover{
+		background-color: rgba(165, 226, 255, 0.9);
+		background: rgba(165, 226, 255, 0.9);
+	}
+
+
+div#ires ol li:nth-child(10){
+	background-color: rgba(0, 255, 0, 1);
+	background: rgba(0, 255, 0, 1);
+}
+	div#ires ol li:nth-child(10):hover{
+		background-color: rgba(165, 226, 255, 1);
+		background: rgba(165, 226, 255, 1);
+	}
+*/
