@@ -33,13 +33,15 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-	
+
 	<style class="konami">
 
 	</style>
 </head>
 
 <body>
+<div id="fb-root"></div>
+<script type="text/javascript" src="js/secret.js"></script>
 <div class="container">
 	<div class="row clearfix row_header">
 		<div class="col-md-2 column">
@@ -47,7 +49,7 @@
 		<div class="col-md-8 column">
 			<div class="page-header">
 				<h1>Search Horizon Alpha</h1>
-				<img src="img/app_goal.png" alt="Make search more efficient!!">
+				<img src="img/app_goal.png" alt="Make search more efficient!!"  class="img-responsive">
 			</div>
 		</div>
 		<div class="col-md-2 column">
@@ -60,7 +62,7 @@
 	<div class="row clearfix">
 		<div class="col-lg-12 column">
 			<div class="input-group">
-			  <input type="text" class="form-control keyword" hint="type keywords or names">
+			  <input type="text" class="form-control keyword" placeholder="type some keywords or names">
 			  <span class="input-group-btn">
 			    <button class="btn btn-default search" type="button"><i class="fa fa-search"></i></button>
 			  </span>
@@ -86,7 +88,7 @@
 		</div>
 	</div>
 		<div class="row clearfix">
-		<div class="col-md-3 column plurk" style="text-align:center; vertical-align:center">
+		<div class="col-md-3 column plurk" style="text-align:left; vertical-align:center">
 			<i data-target="#panel-plurk"><img alt="256x256" width="240px" height="240px" style="margin-top:10px;" src="img/plurk3.png" /></i>
 			<!-- <i class="fa fa-camera-retro fa-5x"></i> -->
 		</div>
@@ -136,15 +138,16 @@
 					</div>
 					<div class="alert alert-dismissable alert-danger">
 						 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-										<h2>Future...</h2>
+										<h2>2013/12/22</h2>
 										<p>	
-											Chrome plugin...(programming)<br>
-											Customized & advanced search <br>
+											Chrome plugin Alpha version<br>
 											Sign with Facebook <br>
-											Three.js & HTML5 support<br>
-											Social network backup support<br>
-											Customizing bootstrap<br>
-											Add some jquery extensions
+											Customizing bootstrap (optimazing)<br>
+											Add some jquery extensions<br>
+											<br>
+											Customized & advanced search (programming...)<br>
+											Data Visualization with Three.js & HTML5 support<br>
+											Social network backup support /* issue */
 										</p>
 					</div>
 			</div>
@@ -167,6 +170,11 @@
 			          </ul>
 			        </div>
 			      </section>
+			    <div class="upgrade">
+			    	<i class="fa fa-bookmark"></i>
+				    <span>Level Up</span><i class="fa fa-level-up"></i>
+				    <p>upgrade with <i class="fa fa-facebook-square"></i></p>
+				</div>
 			</div>
 		</div>
 	<div class="row clearfix">
@@ -201,11 +209,15 @@
 					<li>
 						<a href="#panel-googleplus" data-toggle="tab">Google+</a>
 					</li>
+					<li>
+						<a href="#panel-configuration" data-toggle="tab"><i class="fa fa-cogs"></i>Configs</a>
+					</li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active" id="panel-plurk">
 						<p>
 							<?php
+								/**/
 						        if(isset($_GET["keyword"]))
 						        {
 						                $key=$_GET["keyword"];
@@ -265,12 +277,14 @@
 						        }
 						        echo $doc->saveHTML($doc->getElementById("ires"));
 						        //echo $output;
+						        /**/
 							?>
 						</p>
 					</div>
 					<div class="tab-pane" id="panel-twitter">
 						<p>
 							<?php
+								/**/
 						        if(isset($_GET["keyword"]))
 						        {
 						                $key=$_GET["keyword"];
@@ -321,12 +335,14 @@
 						        	}
 						        }
 						        echo $doc->saveHTML($doc->getElementById("ires"));
+						        /**/
 							?>
 						</p>
 					</div>
 					<div class="tab-pane" id="panel-facebook">
 						<p>
 							<?php
+								/**/
 						        if(isset($_GET["keyword"]))
 						        {
 						                $key=$_GET["keyword"];
@@ -377,12 +393,14 @@
 						        	}
 						        }
 						        echo $doc->saveHTML($doc->getElementById("ires"));
+						        /**/
 							?>
 						</p>
 					</div>
 					<div class="tab-pane" id="panel-googleplus">
 						<p>
 							<?php
+								/**/
 						        if(isset($_GET["keyword"]))
 						        {
 						                $key=$_GET["keyword"];
@@ -433,9 +451,14 @@
 						        	}
 						        }
 						        echo $doc->saveHTML($doc->getElementById("ires"));
+						        /**/
 							?>
 						</p>
 					</div>
+					<div class="tab-pane" id="panel-configuration">
+					</div>
+					<script src="js/detectBrowser.js"></script>
+					<script src="js/configs.js"></script>
 				</div>
 			</div>
 		</div>
@@ -507,6 +530,34 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="advance_search upgrade_page" data-effeckt-page="upgrade-page">
+<div id="my-profile" class="row">
+   <div class="col-md-3">
+       <!-- Profile Picture -->
+       <img id="my-profile-picture" class="img-thumbnail" src="" alt="">
+   </div>
+   <div class="col-md-9">
+       <!-- Profile Information -->
+       <dl class="dl-horizontal">
+           <dt>Name</dt>
+           <dd id="my-profile-name"></dd>
+       </dl>
+       <dl class="dl-horizontal">
+           <dt>Gender</dt>
+           <dd id="my-profile-gender"></dd>
+       </dl>
+       <dl class="dl-horizontal">
+           <dt>Username</dt>
+           <dd id="my-profile-username"></dd>
+       </dl>
+       <dl class="dl-horizontal">
+           <dt>Facebook ID</dt>
+           <dd id="my-profile-facebook-id"></dd>
+       </dl>
+       <button id="upgrade_return" class="btn btn-primary">Return</button>
+   </div>
+</div>
 </div>
 </body>
 </html>

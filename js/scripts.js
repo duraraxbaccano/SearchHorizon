@@ -4,6 +4,9 @@ window.onload=function(){
 		switch(event.which)
 		{
 			//up down left right
+			case 13:
+				callSearch();
+				break;
 			case 38:
 				command+="1";
 				break;
@@ -60,7 +63,7 @@ window.onload=function(){
         }, 1000);
   });
 	 $("button.search").click(function(){
-	 	window.location="http://searchhorizon.herokuapp.com/?keyword="+$("input[type='text'].keyword").val()+"#tabs-663924";
+	 	callSearch();
 	 });
 };
 
@@ -91,4 +94,8 @@ function callMember()
 		$("div.container").fadeIn();
 	}
 	member_block=!member_block;
+}
+function callSearch()
+{
+	window.location="http://searchhorizon.herokuapp.com/?keyword="+$("input[type='text'].keyword").val()+"#tabs-663924";
 }
