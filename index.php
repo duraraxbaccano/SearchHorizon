@@ -457,8 +457,8 @@
 					</div>
 					<div class="tab-pane" id="panel-configuration">
 					</div>
-					<script src="js/detectBrowser.js"></script>
-					<script src="js/configs.js"></script>
+				 <script src="js/detectBrowser.js"></script>
+					 <script src="js/configs.js"></script>
 				</div>
 			</div>
 		</div>
