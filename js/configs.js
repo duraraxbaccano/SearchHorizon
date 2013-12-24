@@ -1,4 +1,4 @@
-window.onload=function(){
+(function(){
 	var bowser_version=getBrowserVersion();
 	$("div#panel-configuration").append("<h3>How to display search results:</h3>");
 	if(bowser_version.search("Chrome")>=0)
@@ -20,7 +20,7 @@ window.onload=function(){
 			$(this).addClass("other active");
 		});
 	}
-};
+})();
 function config_result(exec)
 {
 	if(exec.localeCompare("config-list")==0)
