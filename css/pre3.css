@@ -1,0 +1,23 @@
+div.row.menu{
+	position:fixed;
+	top:0px;
+	font-size: 24px;
+	display:inline-block;
+	text-align: center;
+	vertical-align: middle;
+}
+div.row.menu ul li{
+	float:left;
+	background-image: url("../img/cloud.gif");
+	width:256px;
+	max-width: 100%;
+	height:136px;
+	max-height: 100%;
+}
+div.row.menu ul li span{
+	position: relative;
+	top:40%;
+}
+div.row.menu ul li:hover{
+	color:#EE0;
+}
