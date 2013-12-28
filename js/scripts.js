@@ -29,6 +29,23 @@ window.onload=function(){
 			case 97:
 				command+="6";
 				break;
+		//s S n N o O w W
+			case 83:
+			case 115:
+				command+="s";
+				break;
+			case 78:
+			case 110:
+				command+="n";
+				break;
+			case 79:
+			case 111:
+				command+="o";
+				break;
+			case 87:
+			case 119:
+				command+="w";
+				break;
 			default:
 				break;
 		}
@@ -41,6 +58,14 @@ window.onload=function(){
 		{
 			command="";
 			callMember();
+		}
+		else if(command.search("snow")>=0)
+		{
+			command="";
+			if(typeof $.fn.snow() == 'function')
+				$.fn.snow({ minSize: 10, maxSize: 50, newOn: 500, flakeColor: '#DDD' });
+			else
+				;
 		}
 		else
 			;
