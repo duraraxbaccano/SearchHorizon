@@ -32,8 +32,9 @@
    
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<!-- xmas snow -->
+	<script type="text/javascript" src="js/jquery.snow.min.1.0.js"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
-
 	<style class="konami">
 
 	</style>
@@ -528,6 +529,56 @@
 					<img alt="140x140" src="img/10016026.jpg" class="img-rounded" />
 				</div>
 			</div>
+			<div class="row clearfix">
+				<div class="col-md-4 column">
+					<a class="thumbnail" title="presentation checkpoint 1" href="https://dl.dropboxusercontent.com/u/36926980/presentation2/index.html" target="_blank">Presentation 1
+					<br><br><img class="img-responsive" src="img/pre1.png"></a>
+				</div>
+				<div class="col-md-4 column">
+					<a class="thumbnail" title="presentation checkpoint 3" href="SearHorizon.htm" target="_blank">Presentation 3
+					<br><br><img class="img-responsive" src="img/pre3.png"></a>
+				</div>
+				<div class="col-md-4 column">
+					<a class="thumbnail" title="Celebration" href="#">Celebration
+					<br><br><img class="img-responsive" src="img/la3.jpg"></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+				<div class="jumbotron">
+					<h1>
+						Google Extension Alpha
+					</h1>
+					<p>
+						Stable version<br>
+						1. download and extract file<br>
+						2. in chrome to url: chrome://extensions<br>
+						3. choose developer mode in checkbox<br>
+						4. import unpackage extensions & choose file directory
+					</p>
+					<p>
+						<a class="btn btn-primary btn-large extension-download" href="https://dl.dropboxusercontent.com/u/36926980/presentation2/sh_extension.rar" target="_blank">download</a>
+					</p>
+				</div>
+		</div>
+		<div class="col-md-4 column">
+				<section class="slider">
+			        <div class="flexslider">
+			          <ul class="slides">
+			            <li>
+			  	    	    <img src="img/extension1.png" />
+			  	    		</li>
+			  	    		<li>
+			  	    	    <img src="img/extension2.png" />
+			  	    		</li>
+			  	    		<li>
+			  	    	    <img src="img/extension3.png" />
+			  	    		</li>
+			          </ul>
+			        </div>
+			    </section>
 		</div>
 	</div>
 </div>
