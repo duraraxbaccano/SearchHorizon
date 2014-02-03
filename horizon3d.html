@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		 <meta name="description" content="search horizon 3d experiment">
+  		<meta name="author" content="Leon Lin">
+		<title>Search Horizon 3D</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #000000;
+				background-image: url(img/time_travel.jpg);
+				background-repeat: no-repeat;
+				margin: 0;
+				font-family: Arial;
+				overflow: hidden;
+			}
+			div.leon {
+				color : white;
+			}
+			div.leon div{
+				position: absolute;
+				top : 20%; 
+				color : black;
+				max-width: 100%;
+				max-height: 100%;
+				font-weight: bold;
+				font-size: 18px;
+				font-family: 'Montserrat Subrayada',"Helvetica Neue", Helvetica, Arial, sans-serif;
+				overflow: hidden;
+			}
+			div.leon div a{
+				font-size: 36px;
+			}
+			div.leon div a:hover{
+				color: yellow;
+			}
+			div.leon div span.ctime{
+				color: white;
+			}
+			#search {
+				position: absolute;
+				bottom: 70px;
+				width: 100%;
+				text-align: center;
+			}
+
+			#search input {
+				color: #ffffff;
+				background-color: transparent;
+				border: 1px solid #0080ff;
+				padding: 10px;
+				font-size: 20px;
+				text-transform: uppercase;
+				-webkit-border-radius: 0px; /* workaround for ios safari */
+			}
+
+			#search button {
+				color: #0080ff;
+				background-color: transparent;
+				border: 1px solid #0080ff;
+				padding: 10px;
+				font-size: 20px;
+				text-transform: uppercase;
+				cursor: pointer;
+			}
+			#slider-head{
+				position: absolute;
+				bottom: 10px;
+				width: 100%;
+				min-width: 50px;
+				width: 100%;
+				max-width: 300px;
+			}
+			#slider-range-min .ui-slider-range{background: #0080ff;}
+			#slider-range-min .ui-slider-handle{border-color: #0080ff;}
+			#spd{
+				color: #0080ff;
+				background-color: transparent;
+				padding: 3px;
+				font-size: 12px;
+				text-transform: uppercase;
+			}
+		</style>
+<!-- 		// <script src="js/jquery.min.js"></script> -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/three.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/tween.min.js"></script>
+		<script src="js/CSS3DRenderer.js"></script>
+		<script>
+			function getCookie(cname)
+			{
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i=0; i<ca.length; i++)
+			  {
+			  var c = ca[i].trim();
+			  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+			  }
+			return "";
+			}
+			var friends = null;
+			function friends_search()
+			{ 
+				var access;
+				if(typeof(getCookie("fb_uid")) == undefined)
+				{
+					access = "100000413660757";
+				}
+				else if(getCookie("fb_uid") == "")
+				{
+					access = "100000413660757";
+				}
+				else
+					access=getCookie("fb_uid");
+
+				var request=$.ajax({
+					url:"http://searchhorizon.herokuapp.com/friends.php",
+					data:{ token : access },
+					dataType:"json"
+				}).done(function(data){
+					friends = data;
+				}).fail(function(data){
+					alert("firends fetching failed");
+				});
+			}
+			(function(){
+				friends_search();
+			})();
+
+		function find_friend(uid)
+		{
+			var obj,left,right,mid;
+
+			if( getCookie("fb_uid") === "" && uid === "100000413660757")
+			{ return friends[0][friends[0].length-1]; }
+			else if( getCookie("fb_uid") === "")
+			{ ; }
+			else if( getCookie("fb_uid") === uid )
+			{ return friends[0][friends[0].length-1]; }
+
+			if(friends)
+			{
+				obj = friends[0];
+				left = 0;
+				right = friends[0].length;
+				while(left <= right)
+				{
+					mid = Math.floor(( left + right )/2);
+					if( obj[mid].uid === uid )
+					{
+						return obj[mid];
+					}
+					else if( parseInt(obj[mid].uid) < parseInt(uid) )
+					{
+						left = mid + 1;
+					}
+					else if( parseInt(obj[mid].uid) > parseInt(uid) )
+					{
+						right = mid - 1;
+					}
+				}
+				return null;
+			}
+			else
+			{
+				return null;
+			}
+
+		}
+		</script>
+	</head>
+	<body>
+		<div id="container"></div>
+		<div id="search"><input id="query" type="text" value="cats"><button id="button">search</button><input type="number" max=30 min=1 value=5 onclick="boost();"></div>
+		
+	    <script>
+	        var speed = 5;
+	        function boost(){
+	        	//alert($("input[type='number']").val());
+	        	speed=parseInt($("input[type='number']").val());
+	        }
+	    </script>
+		<script>
+			var camera, scene, renderer;
+			var player;
+
+			var auto = true;
+
+			var Element = function ( entry,index ) {
+
+				var dom = document.createElement( 'div' );
+				dom.style.width = '480px';
+				dom.style.height = '360px';
+				dom.style.background = 'rgba(255,255,255,0.9)';
+				$( dom ).addClass('leon obj'+index);
+
+				var image = document.createElement( 'img' );
+				image.style.position = 'absolute';
+				image.style.width = '480px';
+				image.style.height = '360px';
+
+				image.src = 'img/fb.png';
+				dom.appendChild( image );
+
+
+				var title = document.createElement( 'h3' );
+				title.style.position = 'absolute';
+				if(entry.title === null | typeof(entry.title) === 'undefined' | entry.title === "null")
+				{
+
+				}
+				else
+				{
+					$(title).text(entry.title);
+					dom.appendChild(title);
+				}
+
+				var picture = document.createElement( 'img' );
+				picture.style.position = 'absolute';
+				picture.style.width = 'auto';
+				picture.style.height = 'auto';
+				picture.style.bottom = '5%';
+				picture.style.right = '5%';
+
+				var jsonobj;
+				if(friends && typeof(entry.owner) !== 'undefined')
+				{
+					jsonobj = find_friend(entry.owner);
+				}
+				else
+					;
+				if(jsonobj)
+				{
+					picture.src = jsonobj.picture;
+					dom.appendChild(picture);
+				}
+				else
+					;
+
+				var link_pic = document.createElement( 'img' );
+				link_pic.style.position = 'absolute';
+				link_pic.style.width = 'auto';
+				link_pic.style.height = 'auto';
+				link_pic.style.bottom = '5%';
+				link_pic.style.left = '5%';
+				if(entry.image_urls === null | typeof(entry.image_urls) === 'undefined' | entry.image_urls === "null")
+				{
+
+				}
+				else
+				{
+					link_pic.src=entry.image_urls;
+					dom.appendChild(link_pic);
+				}
+
+
+				var jsonobj;
+				if(friends && typeof(entry.owner) !== 'undefined')
+				{
+					jsonobj = find_friend(entry.owner);
+				}
+				else
+					;
+				if(jsonobj)
+				{
+					picture.src = jsonobj.picture;
+					dom.appendChild(picture);
+				}
+				else
+					;
+
+
+				var button = document.createElement( 'img' );
+				button.style.position = 'absolute';
+				button.style.left = ( ( 480 - 86 ) / 2 ) + 'px';
+				button.style.top = ( ( 360 - 61 ) / 2 ) + 'px';
+				button.style.visibility = 'hidden';
+				button.style.WebkitFilter = 'grayscale()';
+
+				dom.appendChild( button );
+
+				var blocker = document.createElement( 'div' );
+				blocker.style.position = 'absolute';
+				blocker.style.width = '480px';
+				blocker.style.height = '360px';
+				// blocker.style.background = 'rgba(0,0,0,0.5)';
+				blocker.style.cursor = 'pointer';
+				dom.appendChild( blocker );
+
+				var object = new THREE.CSS3DObject( dom );
+				object.position.x = Math.random() * 4000 - 2000;
+				// object.position.y = Math.random() * 2000 - 1000;
+				object.position.y = 3000;
+				object.position.z = Math.random() * - 5000;
+
+				//
+
+				image.addEventListener( 'load', function ( event ) {
+
+					button.style.visibility = 'visible';
+
+					new TWEEN.Tween( object.position )
+						.to( { y: Math.random() * 2000 - 1000 }, 2000 )
+						.easing( TWEEN.Easing.Exponential.Out )
+						.start();
+
+				}, false );
+
+				dom.addEventListener( 'mouseover', function () {
+
+					// button.style.WebkitFilter = '';
+					// blocker.style.background = 'rgba(0,0,0,0)';
+
+				}, false );
+
+				dom.addEventListener( 'mouseout', function () {
+
+					// button.style.WebkitFilter = 'grayscale()';
+					// blocker.style.background = 'rgba(0,0,0,0.75)';
+
+				}, false );
+
+				dom.addEventListener( 'click', function ( event ) {
+
+					event.stopPropagation();
+					auto = false;
+
+					if ( player !== undefined ) {
+
+						player.parentNode.removeChild( player );
+						player = undefined;
+
+					}
+					player = document.createElement( 'div' );
+					player.style.position = 'absolute';
+					player.style.width = 'auto';
+					player.style.height = 'auto';
+					player.style.border = '0px';
+
+					var temp = $(this).attr("class").split(" ")[1];
+					//alert(temp);
+					var entries = data[0][parseInt(temp.replace('obj',""))];
+					var jsonobj;
+
+					if(entries.owner && friends)
+					  jsonobj= find_friend(entries.owner);
+					var link = document.createElement('a');
+					link.href = 'https://www.facebook.com/'+entries.link_id;
+
+					//alert(link.href);
+					if(jsonobj)
+						$(link).text("Post by: "+jsonobj.username);
+					else
+						$(link).text('https://www.facebook.com/'+entries.link_id);
+
+					player.appendChild( link );
+					$(player).append( "<br>" );
+					if(entries.created_time !== "null")
+						$(player).append("<span class='ctime'>"+new Date(parseInt(entries.created_time)*1000)+"</span>");
+					$(player).append( "<br>" );
+					$(player).append(entries.summary);
+					if(entries.owner_comment)
+					{
+						$(player).append("\n"+entries.owner_comment);
+					}
+					else
+						;
+					this.appendChild( player );
+
+					//
+
+					var prev = object.position.z + 400;
+
+					new TWEEN.Tween( camera.position )
+						.to( { x: object.position.x, y: object.position.y - 25 }, 1500 )
+						.easing( TWEEN.Easing.Exponential.Out )
+						.start();
+
+					new TWEEN.Tween( { value: prev } )
+						.to( { value: 0  }, 2000 )
+						.onUpdate( function () {
+
+							move( this.value - prev );
+							prev = this.value;
+
+						} )
+						.easing( TWEEN.Easing.Exponential.Out )
+						.start();
+
+				}, false );
+
+				return object;
+
+			};
+
+			init();
+			animate();
+
+			function init() {
+
+				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 5000 );
+				camera.position.y = - 25;
+
+				scene = new THREE.Scene();
+
+				renderer = new THREE.CSS3DRenderer();
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.domElement.style.position = 'absolute';
+				renderer.domElement.style.top = 0;
+				//renderer.domElement.style.background = '#7f7';
+				document.getElementById( 'container' ).appendChild( renderer.domElement );
+
+				//
+
+				var query = document.getElementById( 'query' );
+				query.addEventListener( 'keyup', function ( event ) {
+
+					if ( event.keyCode === 13 ) {
+
+						search( query.value );
+
+					}
+
+				}, false );
+
+				var button = document.getElementById( 'button' );
+				button.addEventListener( 'click', function ( event ) {
+
+					search( query.value );
+
+				}, false );
+
+				if ( window.location.hash.length > 0 ) {
+
+					query.value = window.location.hash.substr( 1 );
+
+				}
+
+				search( query.value );
+
+				document.body.addEventListener( 'mousewheel', onMouseWheel, false );
+
+				document.body.addEventListener( 'click', function ( event ) {
+
+					auto = true;
+
+					if ( player !== undefined ) {
+
+						player.parentNode.removeChild( player );
+						player = undefined;
+
+					}
+
+					new TWEEN.Tween( camera.position )
+							.to( { x: 0, y: - 25 }, 1500 )
+							.easing( TWEEN.Easing.Exponential.Out )
+							.start();
+
+				}, false );
+
+				window.addEventListener( 'resize', onWindowResize, false );
+
+			}
+
+			function search( query ) {
+
+				window.location.hash = query;
+
+				for ( var i = 0, l = scene.children.length; i < l; i ++ ) {
+
+					( function () {
+
+						var object = scene.children[ i ];
+						var delay = Math.random() * 100;
+
+						new TWEEN.Tween( object.position )
+							.to( { y: - 2000 }, 1000 )
+							.delay( delay )
+							.easing( TWEEN.Easing.Exponential.In )
+							.onComplete( function () {
+
+								scene.remove( object );
+
+							} )
+							.start();
+
+					} )();
+
+				}
+
+				var request = new XMLHttpRequest();
+				request.addEventListener( 'load', onData, false );
+				// debug //alert("Get started");
+				request.open( 'GET', 'http://searchhorizon.herokuapp.com/search.php?token=100000413660757&keyword=' + query, true );
+				request.send( null );
+
+			}
+			var data;
+			function onData( event ) {
+
+				data = JSON.parse( event.target.responseText );
+				var entries = data;
+				// debug //alert(event.target.responseText);
+				//document.getElementById("leon").innerText=event.target.responseText;
+				// console.log( entries );
+
+				for ( var i = 0; i < entries[0].length; i ++ ) {
+					if(typeof(entries[0][i]) !== 'undefined')
+					{
+						var object = new Element( entries[0][ i ],i);
+						scene.add( object );
+					}
+				}
+
+			}
+
+			function move( delta ) {
+
+				for ( var i = 0; i < scene.children.length; i ++ ) {
+
+					var object = scene.children[ i ];
+
+					object.position.z += delta;
+
+					if ( object.position.z > 0 ) {
+
+						object.position.z -= 5000;
+
+					} else if ( object.position.z < - 5000 ) {
+
+						object.position.z += 5000;
+
+					}
+
+				}
+
+			}
+
+			function onMouseWheel( event ) {
+
+				move( event.wheelDelta );
+
+			}
+
+			function onWindowResize() {
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+				TWEEN.update();
+
+				if ( auto === true ) {
+
+					move( speed );
+
+				}
+
+				renderer.render( scene, camera );
+
+			}
+		</script>
+	<div id="leon"></div>
+	</body>
+</html>
