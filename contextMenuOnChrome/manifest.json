@@ -4,7 +4,8 @@
   "version": "1.0",
   "permissions": ["contextMenus"],
   "icons":{
-  	"16":"favicon2.png"
+  	"16":"favicon2.png",
+    "48":"favicon3.png"
   },
   "background": {
     "scripts": ["searchHorizonOnChrome.js"]
